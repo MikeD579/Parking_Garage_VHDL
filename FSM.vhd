@@ -34,11 +34,11 @@ entity FSM is
     Port ( 	carIN 		: in  STD_LOGIC;
            	carOUT 		: in  STD_LOGIC;
 		fireLane	: in  STD_LOGIC;
-		overrideSW	: in	STD_LOGIC;
-		gateSW		: in	STD_LOGIC;
+		overrideSW	: in  STD_LOGIC;
+		gateSW		: in  STD_LOGIC;
 			  
-		RST		: in STD_LOGIC;
-		CLK		: in STD_LOGIC;
+		RST		: in  STD_LOGIC;
+		CLK		: in  STD_LOGIC;
 			  
 		decoderOUT	: out STD_LOGIC_VECTOR (6 downto 0);
 			  
