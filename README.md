@@ -1,1 +1,1 @@
-# schoolprojects
+# School Project
