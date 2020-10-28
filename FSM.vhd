@@ -16,9 +16,6 @@
 -- Revision 0.01 - File Created
 -- Additional Comments: 
 --
---	TO_DO:
--- 	OverRide
---		Servo
 ----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -34,26 +31,26 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 --use UNISIM.VComponents.all;
 
 entity FSM is
-    Port ( carIN 			: in  STD_LOGIC;
-           carOUT 		: in  STD_LOGIC;
-			  fireLane		: in  STD_LOGIC;
-			  overrideSW	: in	STD_LOGIC;
-			  gateSW			: in	STD_LOGIC;
+    Port ( 	carIN 		: in  STD_LOGIC;
+           	carOUT 		: in  STD_LOGIC;
+		fireLane	: in  STD_LOGIC;
+		overrideSW	: in	STD_LOGIC;
+		gateSW		: in	STD_LOGIC;
 			  
-			  RST : in STD_LOGIC;
-			  CLK : in STD_LOGIC;
+		RST		: in STD_LOGIC;
+		CLK		: in STD_LOGIC;
 			  
-			  decoderOUT : out STD_LOGIC_VECTOR (6 downto 0);
+		decoderOUT	: out STD_LOGIC_VECTOR (6 downto 0);
 			  
-			  alarm			: out STD_LOGIC;
-			  capacityLED	: out STD_LOGIC;
-			  gate			: out STD_LOGIC);
+		alarm		: out STD_LOGIC;
+		capacityLED	: out STD_LOGIC;
+		gate		: out STD_LOGIC);
 end FSM;
 
 architecture Behavioral of FSM is
 	
 	--This will be a slow clock with a period of about 1 second
-	signal Clock 			: STD_LOGIC;
+	signal Clock 		: STD_LOGIC;
 	signal Clock_alarm	: STD_LOGIC;
 	signal CLK_DIV 		: STD_LOGIC_VECTOR (18 downto 0);
 	
@@ -64,7 +61,7 @@ architecture Behavioral of FSM is
 	--count for when after a car goes through the sensor to make it wait one second
 	signal gateCount	: integer range 0 to 32 := 0;
 	signal fireCount	: integer range 0 to 16 := 0;
-	signal countafter : integer range 0 to 16 := 0;
+	signal countafter	: integer range 0 to 16 := 0;
 	constant target 	: integer := 16;
 	
 	--count for if the car blocks the sensor for 10sec
@@ -87,11 +84,10 @@ begin
 	Clock_DIV : process(CLK) is
 	begin
 		if(falling_edge(CLK)) then
-		
 			CLK_DIV <= CLK_DIV + '1';
-			
 		end if;
 	end process;
+			
 	--Sets the divided clock to the signal Clock
 	Clock <= CLK_DIV(18);
 	Clock_alarm <= CLK_DIV(14);
@@ -99,7 +95,7 @@ begin
 	--testing alarm
 	alarm <= Clock_alarm and alarmON;
 	
-	--decoder
+	--decoder for 8 segment LED
 	with LED select
 		decoderOUT <= 	"0000001" when "0000",
 							"1001111" when "0001",
