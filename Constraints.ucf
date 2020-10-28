@@ -1,0 +1,20 @@
+NET carIN 		LOC = P96;
+NET carOUT		LOC = P113;
+NET overrideSW LOC = P138;
+NET gateSW		LOC = P140;
+NET fireLane	LOC = P97;
+
+NET RST	  LOC = P94;	
+NET CLK    LOC = P38;
+
+NET decoderOUT(6) LOC = P10;
+NET decoderOUT(5) LOC = P7;
+NET decoderOUT(4) LOC = P5;
+NET decoderOUT(3) LOC = P3;
+NET decoderOUT(2) LOC = P9;
+NET decoderOUT(1) LOC = P6;
+NET decoderOUT(0) LOC = P4;
+
+NET alarm			LOC = P117;
+NET capacityLED	LOC = P2;
+NET gate				LOC = P118;
